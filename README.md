@@ -3,7 +3,7 @@ Bits and bytes to create a fully automated solution where AD computers local gro
 
 
 
-
+```powershell
 #Prepare script environment
 
 .\PrepareScriptEnv.ps1
@@ -29,3 +29,4 @@ Bits and bytes to create a fully automated solution where AD computers local gro
 
 #Import GPOs
  .\ImportGPO.ps1 -GPOName "Server - Local Users and Groups" -BackupPath "C:\source\LocalGroupMembershipLifeCylceMaintenance\Server - Local Users and Groups.zip" -BackupGpoName 'Server - Local Users and Groups'
+```
