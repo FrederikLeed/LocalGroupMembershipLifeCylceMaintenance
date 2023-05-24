@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     This script manages Active Directory (AD) groups for servers. It creates AD groups for each server and removes groups for which there are no corresponding servers.
 
@@ -22,7 +22,9 @@ param(
     [Parameter(Mandatory=$true)]
     [string]$ServerSearchbase,
     [Parameter(Mandatory=$true)]
-    [string]$GroupTargetPath
+    [string]$GroupTargetPath,
+    [Parameter(Mandatory=$true)]
+    [string]$LogfileName
 )
 
 function log{
@@ -33,7 +35,7 @@ function log{
     if ( $message )
     {
         write-debug $message
-        ((get-date).tostring("yyyy-MM-dd hh:mm ") + $message) | out-file ("c:\scripts\logs\server_group_lifecycle.log") -append
+        ((get-date).tostring("yyyy-MM-dd hh:mm ") + $message) | out-file ("c:\scripts\logs\" + $LogfileName) -append
     }
 }
 
