@@ -29,7 +29,7 @@ This is just a simple script to create some folder structure used to host script
 
 ## Copy scripts to server
 
-1. Clone repo: https://github.com/FrederikLeed/LocalGroupMembershipLifeCylceMaintenance
+1. Clone repo: https://github.com/FrederikLeed/LocalGroupMembershipLifeCylceMaintenance and extract files into the c:\source folder
 2. copy server_group_lifecycle.ps1 from source folder to scripts folder
 
 ## Create gMSA
@@ -55,6 +55,10 @@ This is just a simple script to create some folder structure used to host script
 ```
 
 ## Delegate permissions
+
+This will enable the managed service account to create and remove group objects from the container specified.
+![image](https://github.com/FrederikLeed/LocalGroupMembershipLifeCylceMaintenance/assets/37104276/6634a7cf-cec9-449e-8f43-602c7b16dc35)
+
 ```powershell
 <#
 .SYNOPSIS
@@ -79,6 +83,11 @@ This is just a simple script to create some folder structure used to host script
 ```
 
 ## Scheduled tasks
+
+This script will create scheduled task(s). The tasks will run using the previously created managed service account.
+![image](https://github.com/FrederikLeed/LocalGroupMembershipLifeCylceMaintenance/assets/37104276/2c21d07e-83e5-437c-8c67-eec5d1894c1f)
+and run every 5 minutes
+![image](https://github.com/FrederikLeed/LocalGroupMembershipLifeCylceMaintenance/assets/37104276/6b5dce96-0183-43cf-ad2c-1959e1ed4663)
 
 ```powershell
 <#
@@ -116,7 +125,7 @@ This is just a simple script to create some folder structure used to host script
 
 This will import a backup of a GPO that
 1. wipes the memberships of certain local groups
-2. Adds members to certain local group.
+2. Adds members to certain local groups.
 
 The actions are executed in the specified order. First cleaning the groups.
 ![image](https://github.com/FrederikLeed/LocalGroupMembershipLifeCylceMaintenance/assets/37104276/c479e7ab-ddd7-412f-80fe-58d2364d9870)
