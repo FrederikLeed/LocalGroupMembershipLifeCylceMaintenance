@@ -58,20 +58,20 @@ This is just a simple script to create some folder structure used to host script
 ```powershell
 <#
 .SYNOPSIS
-    This script sets a group to have delegated permissions for creating and deleting child objects in the specified Organizational Unit (OU).
+    This script sets an ADObject to have delegated permissions for creating and deleting child objects in the specified Organizational Unit (OU).
 
 .DESCRIPTION
     The script performs the following actions:
     1. Retrieves the Access Control List (ACL) of the specified OU.
-    2. Gets the Security Identifier (SID) for the delegation group.
-    3. Creates an Active Directory Access Rule for the delegation group, granting it the right to create and delete child objects in the OU.
+    2. Gets the Security Identifier (SID) for the delegation object.
+    3. Creates an Active Directory Access Rule for the delegation object, granting it the right to create and delete child objects in the OU.
     4. Applies the updated ACL to the OU.
 
 .PARAMETER TargetOU
     The Organizational Unit (OU) where delegated permissions should be set.
 
 .PARAMETER DelegationObject
-    The name of the Active Directory group that should be granted delegated permissions.
+    The name of the Active Directory object that should be granted delegated permissions.
  #>
  
 .\DelegateGroupLifecyclePermission.ps1 -TargetOU "OU=Servers,OU=Groups,OU=Tier0,OU=company,DC=int,DC=domain,DC=com" -DelegationObject "SGLifeCMGMT"
