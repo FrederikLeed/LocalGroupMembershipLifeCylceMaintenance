@@ -113,6 +113,18 @@ This is just a simple script to create some folder structure used to host script
 ```
 
 ## Import GPOs
+
+This will import a backup of a GPO that
+1. wipes the memberships of certain local groups
+2. Adds members to certain local group.
+
+The actions are executed in the specified order. First cleaning the groups.
+![image](https://github.com/FrederikLeed/LocalGroupMembershipLifeCylceMaintenance/assets/37104276/c479e7ab-ddd7-412f-80fe-58d2364d9870)
+![image](https://github.com/FrederikLeed/LocalGroupMembershipLifeCylceMaintenance/assets/37104276/18fc1b8a-f70b-468f-9bac-39daf9316de3)
+
+Then adding the desired membership.
+![image](https://github.com/FrederikLeed/LocalGroupMembershipLifeCylceMaintenance/assets/37104276/e6093e0d-9c41-453d-b1be-fce5bdc233a6)
+
 ```powershell
 <#
 .SYNOPSIS
@@ -134,3 +146,4 @@ This is just a simple script to create some folder structure used to host script
 
  .\ImportGPO.ps1 -GPOName "Server - Local Users and Groups" -BackupPath "C:\source\LocalGroupMembershipLifeCylceMaintenance\Server - Local Users and Groups.zip" -BackupGpoName 'Server - Local Users and Groups'
 ```
+
