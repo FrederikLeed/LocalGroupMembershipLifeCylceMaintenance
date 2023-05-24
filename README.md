@@ -123,10 +123,14 @@ This is just a simple script to create some folder structure used to host script
     If the GPO doesn't exist, the script will create it.
 
 .PARAMETER GPOName
-    The name of the GPO to import into.
+    The name of the GPO to import into. This can be anything that matched your organizations standards
 
 .PARAMETER BackupPath
     The path to the ZIP file containing the GPO backup.
+ 
+.PARAMETER BackupGpoName
+    Must be the name of the GPO when it was backed up. In this case: 'Server - Local Users and Groups'
 #>
+
  .\ImportGPO.ps1 -GPOName "Server - Local Users and Groups" -BackupPath "C:\source\LocalGroupMembershipLifeCylceMaintenance\Server - Local Users and Groups.zip" -BackupGpoName 'Server - Local Users and Groups'
 ```
