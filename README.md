@@ -107,9 +107,9 @@ This is just a simple script to create some folder structure used to host script
     The name of the Group Managed Service Account (gMSA) to run the task.
 #>
 
-.\Create_Scheduled_task_gmsa.ps1 -TaskName "Tier0 Server Group LifeCycle Management" -TaskDescription "Automatic group provisioning and deprovisioning based on computerobjects" -TaskScriptPath "C:\scripts\server_group_lifecycle.ps1" -TaskScriptArgument "-ServerSearchbase 'OU=Tier0,OU=company,DC=int,DC=domain,DC=com' -GroupTargetPath 'OU=Servers,OU=Groups,OU=Tier0,OU=company,DC=int,DC=domain,DC=com'" -gMSAAccount "SGLifeCMGMT"
+.\Create_Scheduled_task_gmsa.ps1 -TaskName "Tier0 Server Group LifeCycle Management" -TaskDescription "Automatic group provisioning and deprovisioning based on computerobjects" -TaskScriptPath "C:\scripts\server_group_lifecycle.ps1" -TaskScriptArgument "-ServerSearchbase 'OU=Tier0,OU=weritadmin,DC=int,DC=werit,DC=dk' -GroupTargetPath 'OU=Servers,OU=Groups,OU=Tier0,OU=weritadmin,DC=int,DC=werit,DC=dk' -LogfileName 't0grouplifecycle.log'" -gMSAAccount "SGLifeCMGMT"
 
-.\Create_Scheduled_task_gmsa.ps1 -TaskName "Tier1 Server Group LifeCycle Management" -TaskDescription "Automatic group provisioning and deprovisioning based on computerobjects" -TaskScriptPath "C:\scripts\server_group_lifecycle.ps1" -TaskScriptArgument "-ServerSearchbase 'OU=Tier1,OU=company,DC=int,DC=domain,DC=com' -GroupTargetPath 'OU=Servers,OU=Groups,OU=Tier1,OU=company,DC=int,DC=domain,DC=com'" -gMSAAccount "SGLifeCMGMT"
+.\Create_Scheduled_task_gmsa.ps1 -TaskName "Tier1 Server Group LifeCycle Management" -TaskDescription "Automatic group provisioning and deprovisioning based on computerobjects" -TaskScriptPath "C:\scripts\server_group_lifecycle.ps1" -TaskScriptArgument "-ServerSearchbase 'OU=Tier1,OU=weritadmin,DC=int,DC=werit,DC=dk' -GroupTargetPath 'OU=Servers,OU=Groups,OU=Tier1,OU=weritadmin,DC=int,DC=werit,DC=dk' -LogfileName 't1grouplifecycle.log'" -gMSAAccount "SGLifeCMGMT"
 ```
 
 ## Import GPOs
