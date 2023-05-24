@@ -8,7 +8,7 @@ The solution consistently resets unauthorized changes made to the membership of 
 
 
 
-#Prepare script environment
+## Prepare script environment
 This is just a simple script to create some folder structure used to host script and log files. The structure can be anything you want, but some scripts might need editing if a different folder structure is selected / preferred. 
 
 ```powershell
@@ -27,12 +27,12 @@ This is just a simple script to create some folder structure used to host script
 .\PrepareScriptEnv.ps1
 ```
 
-#Copy scripts to server
+## Copy scripts to server
 
 1. Clone repo: https://github.com/FrederikLeed/LocalGroupMembershipLifeCylceMaintenance
 2. copy server_group_lifecycle.ps1 from source folder to scripts folder
 
-#Create gMSA
+## Create gMSA
 ```powershell
 <#
 .SYNOPSIS
@@ -54,7 +54,7 @@ This is just a simple script to create some folder structure used to host script
 .\NewgMSA.ps1 -gmsaname "SGLifeCMGMT" -server "scriptserver01"
 ```
 
-#Delegate permissions
+## Delegate permissions
 ```powershell
 <#
 .SYNOPSIS
@@ -78,7 +78,7 @@ This is just a simple script to create some folder structure used to host script
 .\DelegateGroupLifecyclePermission.ps1 -TargetOU "OU=Servers,OU=Groups,OU=Tier1,OU=company,DC=int,DC=domain,DC=com" -DelegationObject "SGLifeCMGMT"
 ```
 
-#Scheduled tasks
+## Scheduled tasks
 
 ```powershell
 <#
@@ -112,7 +112,7 @@ This is just a simple script to create some folder structure used to host script
 .\Create_Scheduled_task_gmsa.ps1 -TaskName "Tier1 Server Group LifeCycle Management" -TaskDescription "Automatic group provisioning and deprovisioning based on computerobjects" -TaskScriptPath "C:\scripts\server_group_lifecycle.ps1" -TaskScriptArgument "-ServerSearchbase 'OU=Tier1,OU=company,DC=int,DC=domain,DC=com' -GroupTargetPath 'OU=Servers,OU=Groups,OU=Tier1,OU=company,DC=int,DC=domain,DC=com'" -gMSAAccount "SGLifeCMGMT"
 ```
 
-#Import GPOs
+## Import GPOs
 ```powershell
 <#
 .SYNOPSIS
