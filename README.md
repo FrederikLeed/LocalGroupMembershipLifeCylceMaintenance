@@ -133,7 +133,6 @@ The actions are executed in the specified order. First cleaning the groups.
 
 Then adding the desired membership. Policies are evaluated locally, which makes local environment variables accessible.
 
-NB! When this policy is applied. Access to servers is managed in Active Directory. Before applying the policy, make sure to review current access and replicate in the groups created in previous steps to prevent business disruption. Blog post about how to review: https://go2know.it/windows/Server-Inventory-GroupMemberships/ 
 ![image](https://github.com/FrederikLeed/LocalGroupMembershipLifeCylceMaintenance/assets/37104276/e6093e0d-9c41-453d-b1be-fce5bdc233a6)
 
 ```powershell
@@ -158,3 +157,6 @@ NB! When this policy is applied. Access to servers is managed in Active Director
  .\ImportGPO.ps1 -GPOName "Server - Local Users and Groups" -BackupPath "C:\source\LocalGroupMembershipLifeCylceMaintenance\Server - Local Users and Groups.zip" -BackupGpoName 'Server - Local Users and Groups'
 ```
 
+## Linking the GPO to the OU where computer objects are located
+
+What remains is to link the GPO to the targeted OU's. When this policy is applied. Access to servers is managed in Active Directory. Before applying the policy, make sure to review current access and replicate in the groups created in previous steps to prevent business disruption. Blog post about how to review: https://go2know.it/windows/Server-Inventory-GroupMemberships/ 
