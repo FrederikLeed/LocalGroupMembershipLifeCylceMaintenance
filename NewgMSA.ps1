@@ -26,7 +26,10 @@ param(
     [string]$gmsaname,
     
     [Parameter(Mandatory=$true)]
-    [string]$server
+    [string]$server,
+
+    [Parameter(Mandatory=$true)]
+    [string]$domaincontroller
 )
 try {
     $domain = Get-ADDomain
