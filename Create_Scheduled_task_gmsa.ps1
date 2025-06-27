@@ -43,24 +43,25 @@ param(
 try {
     # Create an action for the task - what the task should do
     if($TaskScriptArgument){
-        $TaskAction = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command $TaskScriptPath $TaskScriptArgument"
+        $TaskAction = New-ScheduledTaskAction -Execute "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -Argument "-Command $TaskScriptPath $TaskScriptArgument"
     }else{
-        $TaskAction = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command $TaskScriptPath"
+        $TaskAction = New-ScheduledTaskAction -Execute "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -Argument "-Command $TaskScriptPath"
     }
 
     # Set the trigger for the task - when the task should be run
-    $TaskTrigger = New-ScheduledTaskTrigger -Daily -At (Get-Date).Date
+    $TaskTrigger = New-ScheduledTaskTrigger -Daily -At (Get-Date).Date -RepetitionInterval (New-TimeSpan -Minutes 5) -RepetitionDuration (New-TimeSpan -Days 1)
+
 
     # Create principal to run the scheduled task
-    $Principal =  New-ScheduledTaskPrincipal -UserID ($gMSAAccount + "$") -LogonType Password
+    $Principal =  New-ScheduledTaskPrincipal -UserID ($gMSAAccount + "$") -LogonType ServiceAccount
 
     # Register the task with all the information
-    $task = Register-ScheduledTask -TaskName $TaskName -Description $TaskDescription -Action $TaskAction -Trigger $TaskTrigger -Principal $Principal
+    $task = Register-ScheduledTask -TaskName $TaskName -Description $TaskDescription -Action $TaskAction -Trigger $TaskTrigger -Principal $Principal 
 
     # Set task triggers
-    $task.Triggers.Repetition.Duration = "P1D" #Repeat for a duration of one day
-    $task.Triggers.Repetition.Interval = "PT5M" #Repeat every 5 minutes, use PT1H for every hour
-    $task | Set-ScheduledTask
+    #$task.Triggers.Repetition.Duration = "P1D" #Repeat for a duration of one day
+    #$task.Triggers.Repetition.Interval = "PT5M" #Repeat every 5 minutes, use PT1H for every hour
+    #$task | Set-ScheduledTask
 
     Write-Host "Scheduled task $TaskName created successfully."
 } 
