@@ -33,8 +33,8 @@ param(
 )
 try {
     $domain = Get-ADDomain
-    New-ADServiceAccount -Name $gmsaname -DNSHostName ($gmsaname + $domain.DNSRoot) -Enabled $True
-    Set-ADServiceAccount -Identity $gmsaname -PrincipalsAllowedToRetrieveManagedPassword ($server + "$")
+    New-ADServiceAccount -Name $gmsaname -DNSHostName ($gmsaname + $domain.DNSRoot) -Enabled $True -Server $domaincontroller
+    Set-ADServiceAccount -Identity $gmsaname -PrincipalsAllowedToRetrieveManagedPassword ($server + "$") -Server $domaincontroller
     Test-ADServiceAccount -Identity $gmsaname
 } 
 catch {
